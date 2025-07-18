@@ -6,8 +6,18 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Make script executable
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Make transcriptometer executable
         run: chmod +x transcriptometer.sh
-      - name: Run transcriptometer (example input)
-        run: ./transcriptometer.sh sample.fasta
+
+      - name: Create minimal FASTA input
+        run: |
+          echo ">seq1" > test.fasta
+          echo "ATGCGTAGCTAGCTAGCTAGCTAGCTAGCTA" >> test.fasta
+          echo ">seq2" >> test.fasta
+          echo "CGATCGATCGATCGATCGATCGA" >> test.fasta
+
+      - name: Run transcriptometer
+        run: ./transcriptometer.sh test.fasta
