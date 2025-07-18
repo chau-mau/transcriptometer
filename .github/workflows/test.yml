@@ -1,0 +1,13 @@
+name: Run Transcriptometer
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Make script executable
+        run: chmod +x transcriptometer.sh
+      - name: Run transcriptometer (example input)
+        run: ./transcriptometer.sh sample.fasta
