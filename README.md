@@ -13,7 +13,7 @@ bash transcriptometer.sh Trinity.fasta
 
 - `awk`
 - `grep`
-- `seqkit` (for GC content, if included)
+- `seqkit` (for GC content)
 
 ## Author
 
