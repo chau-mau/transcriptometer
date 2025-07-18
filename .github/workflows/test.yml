@@ -1,23 +1,22 @@
 name: Run Transcriptometer
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    - uses: actions/checkout@v3
 
-      - name: Make transcriptometer executable
-        run: chmod +x transcriptometer.sh
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gnuplot
 
-      - name: Create minimal FASTA input
-        run: |
-          echo ">seq1" > test.fasta
-          echo "ATGCGTAGCTAGCTAGCTAGCTAGCTAGCTA" >> test.fasta
-          echo ">seq2" >> test.fasta
-          echo "CGATCGATCGATCGATCGATCGA" >> test.fasta
-
-      - name: Run transcriptometer
-        run: ./transcriptometer.sh test.fasta
+    - name: Run transcriptometer script
+      run: ./transcriptometer.sh test.fasta
