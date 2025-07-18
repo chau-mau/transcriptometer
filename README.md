@@ -1,6 +1,6 @@
 # Transcriptometer
 
-A lightweight bash script to generate transcriptome assembly statistics from a `.fasta` file.  
+A bash script to generate transcriptome assembly statistics from a `.fasta` file.  
 It outputs total sequences, total length, min/max/average length, N50, GC content, and more.
 
 ## Usage
